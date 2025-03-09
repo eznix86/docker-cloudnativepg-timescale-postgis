@@ -55,7 +55,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ghcr.io/${{ github.repository_owner }}/cloudnativepg-timescale
+            ghcr.io/${{ github.repository_owner }}/cloudnativepg-timescale-postgis
           flavor: latest=false
           tags: |
             type=raw,priority=1000,value=latest,enable=${{ matrix.latest || 'false' }}
