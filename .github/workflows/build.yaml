@@ -1,6 +1,9 @@
 name: Build
 
-on: push
+on:
+  push:
+    paths:
+      - 'Dockerfile'
 
 env:
   # renovate datasource=github-releases depName=timescale/timescaledb
