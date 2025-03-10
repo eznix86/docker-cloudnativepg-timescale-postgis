@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/eznix86/docker-cloudnativepg-timescale-postgis/actions/workflows/build.yaml/badge.svg)](https://github.com/eznix86/docker-cloudnativepg-timescale-postgis/actions/workflows/build.yaml)
 
-This repo builds Docker images for [CloudNativePG](https://cloudnative-pg.io/) with the [TimescaleDB](https://timescale.com) extension installed.
+This repo builds Docker images for [CloudNativePG](https://cloudnative-pg.io/) with the [TimescaleDB](https://timescale.com) and [Postgis](https://postgis.net/) extensions installed.
 
 Both versions are automatically updated by Renovate bot, so new releases will be available within a few hours.
 
