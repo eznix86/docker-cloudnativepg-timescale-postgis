@@ -2,8 +2,6 @@ name: Build
 
 on:
   push:
-    paths:
-      - 'Dockerfile'
 
 env:
   # renovate datasource=github-releases depName=timescale/timescaledb
@@ -29,9 +27,6 @@ jobs:
           - postgres_version: "15"
             # renovate datasource=docker depName=ghcr.io/cloudnative-pg/postgresql
             cnpg_version: 15.13-22
-          - postgres_version: "14"
-            # renovate datasource=docker depName=ghcr.io/cloudnative-pg/postgresql
-            cnpg_version: 14.18-22
     steps:
       - name: Checkout
         uses: actions/checkout@v4
