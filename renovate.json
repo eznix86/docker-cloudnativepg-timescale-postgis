@@ -28,7 +28,7 @@
     {
       "matchDatasources": ["github-releases"],
       "matchPackageNames": ["timescale/timescaledb"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["minor", "patch"],
       "groupName": "tag"
     }
   ]
