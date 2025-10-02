@@ -21,6 +21,12 @@
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
+      "versioning": "regex:^(18)\\.(?<minor>\\d+)-(?<build>\\d+)$",
+      "groupName": "tag"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
       "versioning": "regex:^(17)\\.(?<minor>\\d+)-(?<build>\\d+)$",
       "groupName": "tag"
     },
@@ -41,6 +47,6 @@
       "matchPackageNames": ["timescale/timescaledb"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "tag"
-    },
+    }
   ]
 }
