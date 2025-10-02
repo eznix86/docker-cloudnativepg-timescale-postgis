@@ -1,8 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>clevyr/renovate-config-public",
-    ":automergeAll"
+    "config:recommended"
   ],
   "regexManagers": [
     {
@@ -23,24 +22,18 @@
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-(?<build>\\d+)$",
-      "groupName": "ghcr.io/cloudnative-pg/postgresql docker tag"
+      "groupName": "ghcr.io/cloudnative-pg/postgresql docker tag",
+      "matchUpdateTypes": ["minor", "patch"]
     },
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
-      "matchUpdateTypes": ["major"],
-      "enabled": false
+      "matchUpdateTypes": ["minor", "patch"]
     },
     {
       "matchDatasources": ["github-releases"],
       "matchPackageNames": ["timescale/timescaledb"],
-      "groupName": "timescaledb releases"
-    },
-    {
-      "matchDatasources": ["github-releases"],
-      "matchPackageNames": ["timescale/timescaledb"],
-      "matchUpdateTypes": ["major"],
-      "enabled": false
+      "matchUpdateTypes": ["minor", "patch"]
     }
   ]
 }
