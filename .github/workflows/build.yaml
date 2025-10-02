@@ -140,6 +140,14 @@ jobs:
           name: digests-${{ env.PLATFORM_PAIR }}-${{ matrix.postgres_version }}
           path: ${{ runner.temp }}/digests/*
           retention-days: 1
+
+      - name: Upload metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: metadata
+          path: ${{ steps.meta.outputs.json }}
+          retention-days: 1
+
   merge:
     runs-on: ubuntu-24.04
     needs: build
@@ -155,6 +163,12 @@ jobs:
           pattern: digests-*
           merge-multiple: true
 
+      - name: Download metadata
+        uses: actions/download-artifact@v5
+        with:
+          name: metadata
+          path: ./metadata
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -165,19 +179,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Docker meta (for merge)
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          flavor: latest=false
-          tags: |
-            type=raw,value=latest
-
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
         run: |
-          tags=$(echo -n '${{ steps.meta.outputs.json }}' | jq -cr '.tags | map("-t " + .) | join(" ")')
+          tags=$(jq -cr '.tags | map("-t " + .) | join(" ")' ./metadata/metadata.json)
           echo "Merging with tags: $tags"
           docker buildx imagetools create $tags $(printf '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@sha256:%s ' *)
 
