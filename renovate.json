@@ -23,7 +23,6 @@
       "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-(?<build>\\d+)$",
       "groupName": "ghcr.io/cloudnative-pg/postgresql docker tag",
-      "matchUpdateTypes": ["minor", "patch"]
     },
     {
       "matchDatasources": ["github-releases"],
