@@ -22,14 +22,25 @@
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-(?<build>\\d+)$",
-      "matchUpdateTypes": ["minor", "patch"],
       "groupName": "tag"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     },
     {
       "matchDatasources": ["github-releases"],
       "matchPackageNames": ["timescale/timescaledb"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "tag"
-    }
+    },
+    {
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["timescale/timescaledb"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
   ]
 }
