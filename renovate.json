@@ -26,11 +26,6 @@
       "matchUpdateTypes": ["minor", "patch"]
     },
     {
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
-      "matchUpdateTypes": ["minor", "patch"]
-    },
-    {
       "matchDatasources": ["github-releases"],
       "matchPackageNames": ["timescale/timescaledb"],
       "matchUpdateTypes": ["minor", "patch"]
