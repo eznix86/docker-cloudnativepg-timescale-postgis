@@ -21,7 +21,19 @@
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
-      "versioning": "regex:^(15|16|17)\\.(?<minor>\\d+)-(?<build>\\d+)$",
+      "versioning": "regex:^(17)\\.(?<minor>\\d+)-(?<build>\\d+)$",
+      "groupName": "tag"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
+      "versioning": "regex:^(16)\\.(?<minor>\\d+)-(?<build>\\d+)$",
+      "groupName": "tag"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
+      "versioning": "regex:^(15)\\.(?<minor>\\d+)-(?<build>\\d+)$",
       "groupName": "tag"
     },
     {
