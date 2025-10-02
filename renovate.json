@@ -30,6 +30,17 @@
       "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
       "matchUpdateTypes": ["major"],
       "enabled": false
+    },
+    {
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["timescale/timescaledb"],
+      "groupName": "timescaledb releases"
+    },
+    {
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["timescale/timescaledb"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     }
   ]
 }
