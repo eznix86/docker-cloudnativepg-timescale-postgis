@@ -140,7 +140,6 @@ jobs:
           name: digests-${{ env.PLATFORM_PAIR }}-${{ matrix.postgres_version }}
           path: ${{ runner.temp }}/digests/*
           retention-days: 1
-
   merge:
     runs-on: ubuntu-24.04
     needs: build
@@ -178,8 +177,9 @@ jobs:
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
         run: |
-          docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "${{ steps.meta.outputs.json }}") \
-            $(printf '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@sha256:%s ' *)
+          tags=$(echo -n '${{ steps.meta.outputs.json }}' | jq -cr '.tags | map("-t " + .) | join(" ")')
+          echo "Merging with tags: $tags"
+          docker buildx imagetools create $tags $(printf '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@sha256:%s ' *)
 
       - name: Inspect image
         run: |
