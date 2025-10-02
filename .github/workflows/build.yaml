@@ -184,11 +184,12 @@ jobs:
       - name: Create manifest lists and push for all versions
         working-directory: ${{ runner.temp }}/digests
         run: |
-          for file in $(ls ../../metadata/*.json); do
+          for file in $GITHUB_WORKSPACE/metadata/*.json; do
             tags=$(jq -cr '.tags | map("-t " + .) | join(" ")' "$file")
             echo "Merging for tags from $file: $tags"
             docker buildx imagetools create $tags $(printf '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@sha256:%s ' *)
           done
+
 
       - name: Inspect image (latest)
         run: |
