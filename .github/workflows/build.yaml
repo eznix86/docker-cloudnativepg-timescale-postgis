@@ -10,7 +10,7 @@ on:
 
 env:
   # renovate datasource=github-releases depName=timescale/timescaledb
-  TIMESCALE_VERSION: 2.21.3
+  TIMESCALE_VERSION: 2.22.1
 
 jobs:
   build:
